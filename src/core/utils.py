@@ -45,7 +45,7 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
     )
 
     import asyncio
-    max_retries = 4
+    max_retries = 3
     for attempt in range(max_retries):
         try:
             final_response = ""
@@ -61,6 +61,6 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
             if attempt < max_retries - 1 and any(
                 code in str(exc) for code in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE")
             ):
-                await asyncio.sleep(8.0 * (attempt + 1))
+                await asyncio.sleep(3.0 * (attempt + 1))
                 continue
             raise

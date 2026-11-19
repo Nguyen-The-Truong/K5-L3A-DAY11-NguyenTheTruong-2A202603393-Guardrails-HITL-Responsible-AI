@@ -296,7 +296,7 @@ async def run_attacks(
         print(f"Input: {attack['input'][:100]}...")
 
         try:
-            await asyncio.sleep(6.0)
+            await asyncio.sleep(2.5)
             response, _ = await chat_with_agent(agent, runner, attack["input"])
             outcome = classify_attack_outcome(
                 attack["input"], response, target_name=target_name
